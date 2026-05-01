@@ -3,3 +3,6 @@ dist/
 tmp/
 .DS_Store
 *.tsbuildinfo
+.agents/
+.claude/
+.codex/

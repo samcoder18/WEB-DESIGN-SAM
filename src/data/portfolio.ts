@@ -1,11 +1,3 @@
-export type DecorativeImage = {
-  src: string;
-  alt: string;
-  className: string;
-  delay: number;
-  x: number;
-};
-
 export type Service = {
   number: string;
   name: string;
@@ -18,8 +10,6 @@ export type Project = {
   category: string;
   images: [string, string, string];
 };
-
-export const navLinks = ['Обо мне', 'Цены', 'Проекты', 'Контакты'] as const;
 
 export const portraitUrl =
   'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png';
@@ -47,44 +37,6 @@ export const marqueeImages = [
   'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
   'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
 ] as const;
-
-export const decorativeImages: DecorativeImage[] = [
-  {
-    src: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png',
-    alt: 'Декоративный 3D объект луны',
-    className:
-      'top-[4%] left-[1%] w-[120px] sm:left-[2%] sm:w-[160px] md:left-[4%] md:w-[210px]',
-    delay: 0.1,
-    x: -80,
-  },
-  {
-    src: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png',
-    alt: 'Декоративный 3D объект',
-    className:
-      'bottom-[8%] left-[3%] w-[100px] sm:left-[6%] sm:w-[140px] md:left-[10%] md:w-[180px]',
-    delay: 0.25,
-    x: -80,
-  },
-  {
-    src: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png',
-    alt: 'Декоративный 3D объект lego',
-    className:
-      'top-[4%] right-[1%] w-[120px] sm:right-[2%] sm:w-[160px] md:right-[4%] md:w-[210px]',
-    delay: 0.15,
-    x: 80,
-  },
-  {
-    src: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png',
-    alt: 'Декоративная 3D группа объектов',
-    className:
-      'bottom-[8%] right-[3%] w-[130px] sm:right-[6%] sm:w-[170px] md:right-[10%] md:w-[220px]',
-    delay: 0.3,
-    x: 80,
-  },
-];
-
-export const aboutText =
-  'У меня более пяти лет опыта в дизайне. Я фокусируюсь на брендинге, веб-дизайне и пользовательском опыте. Мне действительно нравится работать с бизнесами, которые хотят выделяться и показывать свой лучший образ. Давайте создадим что-то невероятное вместе!';
 
 export const services: Service[] = [
   {

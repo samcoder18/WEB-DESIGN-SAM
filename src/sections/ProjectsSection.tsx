@@ -32,18 +32,18 @@ function ProjectCard({ project, index, total }: ProjectCardProps) {
         }}
       >
         <div className="flex flex-wrap items-start gap-4 md:flex-nowrap md:items-center md:gap-8">
-          <span className="text-[3rem] font-black leading-none sm:text-[5rem] md:text-[7rem] lg:text-[8.75rem]">
+          <span className="site-number site-number--dark">
             {project.number}
           </span>
           <div className="min-w-[150px] flex-1 pt-2 md:pt-0">
-            <p className="text-xs font-medium uppercase text-frost/70 sm:text-sm md:text-base">
+            <p className="site-kicker site-kicker--dark">
               {project.category}
             </p>
-            <h3 className="mt-2 text-2xl font-medium uppercase leading-tight sm:text-3xl md:text-5xl">
+            <h3 className="site-card-title site-card-title--project site-card-title--dark mt-2">
               {project.name}
             </h3>
           </div>
-          <LiveProjectButton className="px-5 py-2 text-xs sm:px-7 sm:py-3 sm:text-sm" />
+          <LiveProjectButton />
         </div>
 
         <div className="mt-5 grid min-h-0 flex-1 grid-cols-[0.4fr_0.6fr] gap-3 sm:mt-6 md:mt-8">
@@ -80,7 +80,7 @@ export function ProjectsSection() {
       className="relative z-10 -mt-10 rounded-t-[40px] bg-ink px-5 py-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:py-32"
     >
       <FadeIn y={40}>
-        <h2 className="hero-heading mb-16 text-center text-[3rem] font-black uppercase leading-none sm:mb-20 sm:text-[5.5rem] md:mb-28 md:text-[7.5rem] lg:text-[10rem]">
+        <h2 className="site-display-heading site-display-heading--frost mb-16 sm:mb-20 md:mb-28">
           Проект
         </h2>
       </FadeIn>

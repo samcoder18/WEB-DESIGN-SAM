@@ -5,6 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        display: ['Unbounded', 'Manrope', 'sans-serif'],
         sans: ['Manrope', 'sans-serif'],
       },
       colors: {
