@@ -12,7 +12,7 @@ export type Project = {
 };
 
 export const portraitUrl =
-  'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png';
+  'https://s10.iimage.su/s/01/gX8jKVIxd5DMCeglR4wLG7ppfSMFXTjGsAkJEJYHA.png';
 
 export const marqueeImages = [
   'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
