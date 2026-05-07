@@ -4,7 +4,7 @@ import { services } from '../data/portfolio';
 export function ServicesSection() {
   return (
     <section
-      id="цены"
+      id="услуги"
       className="rounded-t-[40px] bg-white px-5 py-20 text-ink sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
     >
       <FadeIn y={40}>

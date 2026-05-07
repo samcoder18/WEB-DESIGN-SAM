@@ -12,7 +12,7 @@ export type Project = {
 };
 
 export const portraitUrl =
-  'https://s10.iimage.su/s/01/gX8jKVIxd5DMCeglR4wLG7ppfSMFXTjGsAkJEJYHA.png';
+  'https://s10.iimage.su/s/01/gAfjQBMxBHh2QHkzjrDPrnQzcbfDS12pZfZDV7OEO.png';
 
 export const marqueeImages = [
   'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',

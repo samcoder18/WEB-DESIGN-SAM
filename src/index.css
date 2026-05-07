@@ -50,6 +50,124 @@ img {
   max-width: 100%;
 }
 
+section[id] {
+  scroll-margin-top: 3.75rem;
+}
+
+.site-navbar-shell {
+  min-height: 38px;
+  background: transparent;
+  backdrop-filter: blur(10px) saturate(112%);
+  -webkit-backdrop-filter: blur(10px) saturate(112%);
+}
+
+.premium-site-navbar {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  width: min(100%, 460px);
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transform: translateZ(0);
+}
+
+.premium-site-navbar__list {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2.45rem, 10.5vw, 3.65rem);
+}
+
+.premium-site-navbar__item {
+  position: relative;
+  min-width: 0;
+}
+
+.premium-site-navbar__link {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.1rem;
+  color: rgba(232, 238, 243, 0.66);
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 220ms ease,
+    opacity 220ms ease;
+}
+
+.premium-site-navbar__label {
+  position: relative;
+  z-index: 1;
+}
+
+.premium-site-navbar__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  height: 1px;
+  background: rgba(244, 248, 251, 0.78);
+  opacity: 0;
+  transform: scaleX(0.56);
+  transform-origin: center;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.premium-site-navbar__link:hover {
+  color: #f4f8fb;
+  opacity: 1;
+}
+
+.premium-site-navbar__link:hover::after,
+.premium-site-navbar__link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.premium-site-navbar__link:focus-visible {
+  color: #f4f8fb;
+  outline: 1px solid rgba(215, 226, 234, 0.48);
+  outline-offset: 4px;
+}
+
+@media (min-width: 640px) {
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
+  .premium-site-navbar__link {
+    font-size: 0.88rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .premium-site-navbar__list {
+    gap: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-site-navbar__link,
+  .premium-site-navbar__link::after {
+    transition: none;
+  }
+}
+
 .hero-heading {
   display: inline-block;
   background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
