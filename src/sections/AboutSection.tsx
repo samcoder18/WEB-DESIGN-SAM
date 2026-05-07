@@ -7,7 +7,6 @@ import {
   useScroll,
   useTransform,
 } from 'framer-motion';
-import { ContactButton } from '../components/ContactButton';
 
 type StageRange = {
   input: [number, number, number, number];
@@ -21,7 +20,6 @@ type AboutStage = {
   heading: string;
   body: string;
   range: StageRange;
-  cta?: string;
 };
 
 const aboutStages: AboutStage[] = [
@@ -52,7 +50,6 @@ const aboutStages: AboutStage[] = [
     body:
       'От первого визуального направления до финальной посадочной страницы — я собираю проект так, чтобы он выглядел профессионально и оставался в памяти.',
     range: { input: [0.76, 0.84, 0.92, 1], final: true },
-    cta: 'СВЯЗАТЬСЯ',
   },
 ];
 
@@ -82,10 +79,10 @@ type StoryStageProps = {
 };
 
 function StoryStage({ stage, index, progress, reducedMotion }: StoryStageProps) {
-  const opacityOutput: StageOutput = stage.range.final ? [0, 1, 1, 1] : [0, 1, 1, 0];
-  const yOutput: StageOutput = stage.range.final ? [40, 0, 0, 0] : [40, 0, 0, -40];
-  const scaleOutput: StageOutput = stage.range.final ? [1.06, 1, 1, 1] : [1.06, 1, 1, 0.96];
-  const blurOutput: StageOutput = stage.range.final ? [10, 0, 0, 0] : [10, 0, 0, 10];
+  const opacityOutput: StageOutput = stage.range.final ? [0, 1, 1, 0] : [0, 1, 1, 0];
+  const yOutput: StageOutput = stage.range.final ? [40, 0, 0, -30] : [40, 0, 0, -40];
+  const scaleOutput: StageOutput = stage.range.final ? [1.06, 1, 1, 0.98] : [1.06, 1, 1, 0.96];
+  const blurOutput: StageOutput = stage.range.final ? [10, 0, 0, 8] : [10, 0, 0, 10];
 
   const opacity = useTransform(progress, (value) =>
     mapStageValue(value, stage.range.input, opacityOutput),
@@ -110,7 +107,7 @@ function StoryStage({ stage, index, progress, reducedMotion }: StoryStageProps) 
         scale: reducedMotion ? 1 : scale,
         filter: reducedMotion ? 'blur(0px)' : filter,
       }}
-      aria-hidden={reducedMotion && !stage.range.final}
+      aria-hidden={!stage.range.final}
       data-about-stage={index + 1}
     >
       <div className="flex w-full flex-col items-center">
@@ -125,12 +122,6 @@ function StoryStage({ stage, index, progress, reducedMotion }: StoryStageProps) 
         <p className="site-body site-body--large site-body--dark mt-7 max-w-[320px] text-center sm:mt-8 md:max-w-[720px]">
           {stage.body}
         </p>
-
-        {stage.cta && (
-          <div className="pointer-events-auto mt-10 sm:mt-12">
-            <ContactButton label={stage.cta} showIcon={false} />
-          </div>
-        )}
       </div>
     </motion.div>
   );
@@ -149,8 +140,19 @@ export function AboutSection() {
     <section
       id="обо-мне"
       ref={containerRef}
+      aria-labelledby="about-heading"
       className="relative h-[220vh] bg-ink px-5 text-frost sm:px-8 md:h-[280vh] md:px-10"
     >
+      <div className="sr-only">
+        <h2 id="about-heading">Обо мне</h2>
+        {aboutStages.map((stage) => (
+          <div key={stage.eyebrow}>
+            <h3>{stage.heading.replace('\n', ' ')}</h3>
+            <p>{stage.body}</p>
+          </div>
+        ))}
+      </div>
+
       <div className="sticky top-0 h-screen overflow-hidden">
         <div className="absolute inset-0 bg-ink" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(187,204,215,0.08),transparent_45%)]" />

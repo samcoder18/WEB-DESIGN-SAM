@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useRef, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 
 type MagnetProps = {
   children: ReactNode;
@@ -19,8 +20,13 @@ export function Magnet({
 }: MagnetProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0, active: false });
+  const shouldReduceMotion = Boolean(useReducedMotion());
 
   useEffect(() => {
+    if (shouldReduceMotion) {
+      return;
+    }
+
     const handlePointerMove = (event: PointerEvent) => {
       if (event.pointerType === 'touch') {
         return;
@@ -59,16 +65,22 @@ export function Magnet({
     window.addEventListener('pointermove', handlePointerMove, { passive: true });
 
     return () => window.removeEventListener('pointermove', handlePointerMove);
-  }, [padding, strength]);
+  }, [padding, shouldReduceMotion, strength]);
 
   return (
     <div
       ref={ref}
       className={className}
       style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
-        transition: position.active ? activeTransition : inactiveTransition,
-        willChange: 'transform',
+        transform: shouldReduceMotion
+          ? 'none'
+          : `translate3d(${position.x}px, ${position.y}px, 0)`,
+        transition: shouldReduceMotion
+          ? 'none'
+          : position.active
+            ? activeTransition
+            : inactiveTransition,
+        willChange: shouldReduceMotion ? 'auto' : 'transform',
       }}
     >
       {children}

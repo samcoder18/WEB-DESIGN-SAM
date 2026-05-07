@@ -12,6 +12,7 @@ type ProjectCardProps = {
 
 function ProjectCard({ project, index, total }: ProjectCardProps) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const titleId = `project-${project.number}-title`;
   const targetScale = 1 - (total - 1 - index) * 0.03;
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
@@ -23,6 +24,7 @@ function ProjectCard({ project, index, total }: ProjectCardProps) {
   return (
     <div ref={wrapperRef} className="h-[85vh]">
       <motion.article
+        aria-labelledby={titleId}
         className="sticky flex max-h-[calc(100vh-7rem)] min-h-[560px] flex-col overflow-hidden rounded-[40px] border-2 border-frost bg-ink p-4 text-frost [--project-top:6rem] sm:rounded-[50px] sm:p-6 md:max-h-[calc(100vh-9rem)] md:rounded-[60px] md:p-8 md:[--project-top:8rem]"
         style={{
           top: `calc(var(--project-top) + ${index * 28}px)`,
@@ -39,11 +41,14 @@ function ProjectCard({ project, index, total }: ProjectCardProps) {
             <p className="site-kicker site-kicker--dark">
               {project.category}
             </p>
-            <h3 className="site-card-title site-card-title--project site-card-title--dark mt-2">
+            <h3
+              id={titleId}
+              className="site-card-title site-card-title--project site-card-title--dark mt-2"
+            >
               {project.name}
             </h3>
           </div>
-          <LiveProjectButton />
+          <LiveProjectButton projectName={project.name} />
         </div>
 
         <div className="mt-5 grid min-h-0 flex-1 grid-cols-[0.4fr_0.6fr] gap-3 sm:mt-6 md:mt-8">
@@ -51,12 +56,14 @@ function ProjectCard({ project, index, total }: ProjectCardProps) {
             <img
               src={project.images[0]}
               alt={`${project.name}, изображение 1`}
+              decoding="async"
               loading="lazy"
               className="h-[120px] w-full rounded-[28px] object-cover sm:h-[150px] sm:rounded-[38px] md:h-[210px] md:rounded-[50px] lg:rounded-[60px]"
             />
             <img
               src={project.images[1]}
               alt={`${project.name}, изображение 2`}
+              decoding="async"
               loading="lazy"
               className="min-h-0 flex-1 rounded-[28px] object-cover sm:rounded-[38px] md:rounded-[50px] lg:rounded-[60px]"
             />
@@ -64,6 +71,7 @@ function ProjectCard({ project, index, total }: ProjectCardProps) {
           <img
             src={project.images[2]}
             alt={`${project.name}, главное изображение`}
+            decoding="async"
             loading="lazy"
             className="h-full min-h-[260px] w-full rounded-[28px] object-cover sm:min-h-[330px] sm:rounded-[38px] md:min-h-0 md:rounded-[50px] lg:rounded-[60px]"
           />

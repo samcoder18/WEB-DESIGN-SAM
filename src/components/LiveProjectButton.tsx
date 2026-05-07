@@ -3,6 +3,7 @@ import { motion, useReducedMotion, type Variants } from 'framer-motion';
 
 type LiveProjectButtonProps = {
   className?: string;
+  projectName?: string;
 };
 
 const secondaryButtonVariants: Variants = {
@@ -42,7 +43,7 @@ const secondaryIconVariants: Variants = {
   },
 };
 
-export function LiveProjectButton({ className = '' }: LiveProjectButtonProps) {
+export function LiveProjectButton({ className = '', projectName }: LiveProjectButtonProps) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -54,6 +55,7 @@ export function LiveProjectButton({ className = '' }: LiveProjectButtonProps) {
       animate={shouldReduceMotion ? undefined : 'rest'}
       whileHover={shouldReduceMotion ? undefined : 'hover'}
       whileTap={shouldReduceMotion ? undefined : 'tap'}
+      aria-label={projectName ? `Смотреть проект: ${projectName}` : 'Смотреть проект'}
     >
       <span className="relative z-10">Смотреть проект</span>
       <motion.span

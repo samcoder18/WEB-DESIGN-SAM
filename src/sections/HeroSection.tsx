@@ -28,6 +28,7 @@ export function HeroSection() {
             <img
               src={portraitUrl}
               alt="Сэм, 3D-креатор"
+              decoding="async"
               className="pointer-events-none w-full origin-center -rotate-[3deg] select-none"
             />
           </Magnet>

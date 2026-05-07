@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Сэм — 3D-креатор">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0C0C0C" />
+      <stop offset="0.58" stop-color="#121518" />
+      <stop offset="1" stop-color="#303943" />
+    </linearGradient>
+    <linearGradient id="type" x1="0" y1="120" x2="0" y2="505" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6F8FA" />
+      <stop offset="1" stop-color="#8A96A2" />
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientTransform="translate(875 210) rotate(90) scale(260 360)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D7E2EA" stop-opacity="0.3" />
+      <stop offset="1" stop-color="#D7E2EA" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="880" cy="215" r="310" fill="url(#halo)" />
+  <path d="M821 105h248c25.4 0 46 20.6 46 46v328c0 25.4-20.6 46-46 46H821c-25.4 0-46-20.6-46-46V151c0-25.4 20.6-46 46-46Z" fill="#F6F8FA" fill-opacity="0.06" stroke="#D7E2EA" stroke-opacity="0.28" stroke-width="2" />
+  <path d="M836 384c21 16 47 24 78 24 40 0 65-16 65-43 0-24-16-36-58-44l-22-4c-51-10-76-35-76-75 0-46 38-74 96-74 35 0 64 9 89 26l-26 49c-19-13-39-19-64-19-27 0-44 10-44 27 0 16 13 24 47 31l22 4c60 12 87 37 87 80 0 53-43 89-114 89-45 0-81-11-106-34l26-37Z" fill="url(#type)" />
+  <text x="88" y="170" fill="#D7E2EA" fill-opacity="0.72" font-family="Manrope, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="0">3D / BRANDING / WEB</text>
+  <text x="84" y="340" fill="url(#type)" font-family="Arial Black, Manrope, Arial, sans-serif" font-size="132" font-weight="900" letter-spacing="-2">SAM</text>
+  <text x="92" y="432" fill="#F6F8FA" font-family="Manrope, Arial, sans-serif" font-size="46" font-weight="800">Сэм — 3D-креатор</text>
+  <text x="92" y="496" fill="#D7E2EA" fill-opacity="0.8" font-family="Manrope, Arial, sans-serif" font-size="30" font-weight="500">Визуальные проекты, которые выглядят цельно и запоминаются.</text>
+</svg>
