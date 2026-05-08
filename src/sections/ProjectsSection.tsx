@@ -85,7 +85,7 @@ export function ProjectsSection() {
   return (
     <section
       id="проекты"
-      className="relative z-10 -mt-10 rounded-t-[40px] bg-ink px-5 py-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:py-32"
+      className="relative z-10 -mt-10 rounded-t-[40px] bg-transparent px-5 py-20 sm:-mt-12 sm:rounded-t-[50px] sm:px-8 sm:py-24 md:-mt-14 md:rounded-t-[60px] md:px-10 md:py-32"
     >
       <FadeIn y={40}>
         <h2 className="site-display-heading site-display-heading--frost mb-16 sm:mb-20 md:mb-28">

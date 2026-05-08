@@ -1,9 +1,9 @@
 import { SiteNavbar } from './components/SiteNavbar';
 import { AboutSection } from './sections/AboutSection';
 import { HeroSection } from './sections/HeroSection';
+import { JourneyCardsSection } from './sections/JourneyCardsSection';
 import { MarqueeSection } from './sections/MarqueeSection';
 import { ProjectsSection } from './sections/ProjectsSection';
-import { ServicesSection } from './sections/ServicesSection';
 
 export default function App() {
   return (
@@ -15,11 +15,11 @@ export default function App() {
         Перейти к содержанию
       </a>
       <SiteNavbar />
-      <main id="content" className="min-h-screen overflow-x-clip bg-ink">
+      <main id="content" className="site-background-surface min-h-screen overflow-x-clip">
         <HeroSection />
         <MarqueeSection />
         <AboutSection />
-        <ServicesSection />
+        <JourneyCardsSection />
         <ProjectsSection />
       </main>
     </>

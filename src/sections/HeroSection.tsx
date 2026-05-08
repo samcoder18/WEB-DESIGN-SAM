@@ -6,7 +6,7 @@ import { portraitUrl } from '../data/portfolio';
 
 export function HeroSection() {
   return (
-    <section className="relative flex h-screen min-h-[620px] flex-col overflow-x-clip bg-ink">
+    <section className="relative flex h-screen min-h-[620px] flex-col overflow-x-clip bg-transparent">
       <div className="relative z-0 mt-20 w-full overflow-hidden sm:mt-20 md:mt-20 lg:mt-[4.5rem]">
         <motion.h1
           className="hero-heading font-display block w-full whitespace-nowrap text-center text-[15.5vw] font-black uppercase leading-none tracking-tight min-[360px]:text-[16vw] sm:text-[17vw] md:text-[16vw] lg:text-[15vw] xl:text-[14vw]"

@@ -141,7 +141,7 @@ export function AboutSection() {
       id="обо-мне"
       ref={containerRef}
       aria-labelledby="about-heading"
-      className="relative h-[220vh] bg-ink px-5 text-frost sm:px-8 md:h-[280vh] md:px-10"
+      className="relative h-[220vh] bg-transparent px-5 text-frost sm:px-8 md:h-[280vh] md:px-10"
     >
       <div className="sr-only">
         <h2 id="about-heading">Обо мне</h2>
@@ -154,8 +154,7 @@ export function AboutSection() {
       </div>
 
       <div className="sticky top-0 h-screen overflow-hidden">
-        <div className="absolute inset-0 bg-ink" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(187,204,215,0.08),transparent_45%)]" />
+        <div className="site-background-veil absolute inset-0" />
 
         <div className="relative h-full">
           {aboutStages.map((stage, index) => (
