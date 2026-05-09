@@ -49,7 +49,7 @@ export function LiveProjectButton({ className = '', projectName }: LiveProjectBu
   return (
     <motion.button
       type="button"
-      className={`premium-secondary-cta group inline-flex min-h-[2.875rem] items-center justify-center gap-2 rounded-full px-4 py-2.5 font-display text-[0.68rem] font-bold uppercase leading-none tracking-normal transition duration-300 ease-out will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-frost sm:min-h-12 sm:px-5 sm:text-xs md:min-h-[3.1rem] md:px-6 md:text-[0.82rem] ${className}`}
+      className={`premium-secondary-cta group inline-flex min-h-[2.875rem] items-center justify-center gap-2 rounded-full px-4 py-2.5 font-sans text-[0.68rem] font-bold uppercase leading-none tracking-normal transition duration-300 ease-out will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-frost sm:min-h-12 sm:px-5 sm:text-xs md:min-h-[3.1rem] md:px-6 md:text-[0.82rem] ${className}`}
       variants={shouldReduceMotion ? undefined : secondaryButtonVariants}
       initial={shouldReduceMotion ? undefined : 'rest'}
       animate={shouldReduceMotion ? undefined : 'rest'}

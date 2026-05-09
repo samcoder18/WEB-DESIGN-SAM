@@ -7,27 +7,27 @@ import {
   useTransform,
 } from 'framer-motion';
 
-import { services } from '../data/portfolio';
+import { type Service, services } from '../data/portfolio';
 
 type JourneyCard = {
-  description: string;
   eyebrow: string;
   features: [string, string, string];
-  tone: 'light' | 'red' | 'dark';
+  summary: string;
   title: string;
+  variant: Service['variant'];
   visual: 'left' | 'middle' | 'right';
 };
 
 const serviceTitles = ['Иммерсивные\nлендинги', 'Сайты\nпод ключ', 'Брендинг\nи система'] as const;
-const cardTones: JourneyCard['tone'][] = ['light', 'red', 'dark'];
 const cardVisuals: JourneyCard['visual'][] = ['left', 'middle', 'right'];
+const servicesPanoramaImageUrl = '/services-panorama.png';
 
 const journeyCards: JourneyCard[] = services.map((service, index) => ({
   eyebrow: `${service.number} / ${service.signal}`,
   title: serviceTitles[index] ?? service.name,
-  description: service.lead,
+  summary: service.summary,
   features: service.scope,
-  tone: cardTones[index] ?? 'light',
+  variant: service.variant,
   visual: cardVisuals[index] ?? 'left',
 }));
 
@@ -46,9 +46,9 @@ export function JourneyCardsSection() {
   const titleScale = useTransform(scrollYProgress, [0.12, 0.24], [0.92, 1]);
   const titleBlur = useTransform(scrollYProgress, [0.12, 0.24], [12, 0]);
   const titleFilter = useMotionTemplate`blur(${titleBlur}px)`;
-  const stageScale = useTransform(scrollYProgress, [0, 0.24], [1.12, 1]);
-  const stageY = useTransform(scrollYProgress, [0, 0.24], [30, 0]);
-  const stageGap = useTransform(scrollYProgress, [0.3, 0.46, 0.88], [0, 28, 42]);
+  const stageScale = useTransform(scrollYProgress, [0, 0.24], [1.24, 1]);
+  const stageY = useTransform(scrollYProgress, [0, 0.24], [44, 0]);
+  const stageGap = useTransform(scrollYProgress, [0.3, 0.46, 0.88], [0, 36, 56]);
   const stageGapPx = useMotionTemplate`${stageGap}px`;
 
   const frontRotateY = useTransform(scrollYProgress, [0.52, 0.68], [0, -180]);
@@ -145,7 +145,7 @@ export function JourneyCardsSection() {
             <motion.article
               key={card.title}
               aria-labelledby={`journey-card-${index + 1}-title`}
-              className="journey-card"
+              className={`journey-card journey-card--${card.variant}`}
               transition={{ duration: 0 }}
               style={
                 reducedMotion
@@ -172,14 +172,19 @@ export function JourneyCardsSection() {
                 }
               >
                 <div className="journey-card__placeholder" aria-hidden="true">
-                  <span className="journey-card__placeholder-ridge" />
-                  <span className="journey-card__placeholder-orbit journey-card__placeholder-orbit--one" />
-                  <span className="journey-card__placeholder-orbit journey-card__placeholder-orbit--two" />
+                  <img
+                    alt=""
+                    aria-hidden="true"
+                    className="journey-card__placeholder-image"
+                    decoding="async"
+                    draggable="false"
+                    src={servicesPanoramaImageUrl}
+                  />
                 </div>
               </motion.div>
 
               <motion.div
-                className={`journey-card__face journey-card__back journey-card__back--${card.tone}`}
+                className={`journey-card__face journey-card__back journey-card__back--${card.variant}`}
                 transition={{ duration: 0 }}
                 style={
                   reducedMotion
@@ -197,18 +202,22 @@ export function JourneyCardsSection() {
                   </h3>
                 </div>
 
-                <div className="journey-card__divider" aria-hidden="true" />
+                <div className="journey-card__body">
+                  <div className="journey-card__divider" aria-hidden="true" />
 
-                <ul
-                  className="journey-card__features"
-                  aria-label={`Что входит: ${card.title.replace('\n', ' ')}`}
-                >
-                  {card.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
+                  <ul
+                    className="journey-card__features"
+                    aria-label={`Что входит: ${card.title.replace('\n', ' ')}`}
+                  >
+                    {card.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
 
-                <p className="journey-card__description">{card.description}</p>
+                <div className="journey-card__dock">
+                  <p className="journey-card__description">{card.summary}</p>
+                </div>
               </motion.div>
             </motion.article>
           ))}

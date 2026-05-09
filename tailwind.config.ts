@@ -5,12 +5,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Unbounded', 'Manrope', 'sans-serif'],
-        sans: ['Manrope', 'sans-serif'],
-        editorial: ['Instrument Serif', 'serif'],
+        display: ['TT Firs Neue', 'TT Firs Neue Trial', 'TT Firs Neue Trl', 'Unbounded', 'sans-serif'],
+        sans: ['ALS Hauss', 'ALS Hauss Hairline', 'ALS Hauss Thin', 'Manrope', 'sans-serif'],
+        editorial: ['ALS Hauss', 'ALS Hauss Hairline', 'ALS Hauss Thin', 'Manrope', 'sans-serif'],
       },
       colors: {
-        ink: '#0C0C0C',
+        ink: '#100E0E',
         frost: '#D7E2EA',
       },
     },

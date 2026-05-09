@@ -89,7 +89,7 @@ export function ContactButton({
   const baseClasses =
     'group relative inline-flex items-center justify-center gap-2 rounded-full uppercase leading-none transition duration-300 ease-out will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-frost';
   const variantClasses =
-    'premium-site-cta min-h-[3.25rem] gap-3 px-6 py-3.5 font-display text-[0.72rem] font-bold tracking-normal sm:min-h-14 sm:px-8 sm:text-xs md:min-h-[3.6rem] md:px-9 md:text-sm';
+    'premium-site-cta min-h-[3.25rem] gap-3 px-6 py-3.5 font-sans text-[0.72rem] font-bold tracking-normal sm:min-h-14 sm:px-8 sm:text-xs md:min-h-[3.6rem] md:px-9 md:text-sm';
 
   return (
     <motion.button

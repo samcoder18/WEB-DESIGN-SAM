@@ -1,11 +1,6 @@
 import { useRef } from 'react';
-import {
-  motion,
-  useMotionTemplate,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { HorizontalCharacterReveal } from '../components/HorizontalCharacterReveal';
 
 const manifestoText =
   'Я создаю визуальные идентичности, 3D-сцены и digital-опыт, которые раскрывают характер проекта, собирают внимание в нужных точках и превращают разрозненную идею в сильный, цельный и запоминающийся образ.';
@@ -18,77 +13,49 @@ export function AboutSection() {
     offset: ['start start', 'end end'],
   });
 
-  const cardOpacity = useTransform(scrollYProgress, [0, 0.12, 0.24], [0, 0.72, 1]);
-  const cardScale = useTransform(scrollYProgress, [0, 0.22], [0.96, 1]);
-  const cardY = useTransform(scrollYProgress, [0, 0.22], [48, 0]);
+  const stageOpacity = useTransform(scrollYProgress, [0, 0.12, 0.24], [0, 0.74, 1]);
+  const stageScale = useTransform(scrollYProgress, [0, 0.22], [0.985, 1]);
+  const stageY = useTransform(scrollYProgress, [0, 0.22], [52, 0]);
+  const textProgress = useTransform(scrollYProgress, [0.14, 0.98], [0, 1]);
 
-  const revealOpacity = useTransform(scrollYProgress, [0.08, 0.2, 0.84], [0, 1, 1]);
-  const revealY = useTransform(scrollYProgress, [0.08, 0.22], [28, 0]);
-  const revealBlur = useTransform(scrollYProgress, [0.08, 0.22], [16, 0]);
-  const revealBottomInset = useTransform(scrollYProgress, [0.12, 0.74], ['100%', '0%']);
-  const revealClipPath = useMotionTemplate`inset(0 0 ${revealBottomInset} 0)`;
-  const revealFilter = useMotionTemplate`blur(${revealBlur}px)`;
-
-  const eyebrowOpacity = useTransform(scrollYProgress, [0.04, 0.16], [0, 1]);
   return (
     <section
       id="обо-мне"
       ref={sectionRef}
       aria-labelledby="about-heading"
-      className="relative h-[190vh] bg-transparent px-4 text-frost sm:px-6 md:h-[220vh] md:px-10"
+      className="relative h-[200vh] bg-transparent px-4 text-frost sm:px-6 md:h-[228vh] md:px-10"
     >
       <div className="sr-only">
         <h2 id="about-heading">Обо мне</h2>
-        <p>{manifestoText}</p>
       </div>
 
-      <div className="sticky top-0 flex min-h-screen items-center py-8">
+      <div className="sticky top-0 flex min-h-screen items-center">
         <motion.div
-          className="about-manifesto-card relative mx-auto flex min-h-[78vh] w-full max-w-[1760px] items-center overflow-hidden rounded-[30px] px-5 py-6 sm:min-h-[82vh] sm:px-7 sm:py-7 md:rounded-[42px] md:px-12 md:py-10 lg:px-16 xl:px-20"
+          className="about-manifesto-stage relative mx-auto flex min-h-screen w-full max-w-[1880px] items-center overflow-hidden px-3 py-10 sm:px-5 md:px-8 lg:px-14"
           style={
             reducedMotion
               ? undefined
               : {
-                  opacity: cardOpacity,
-                  scale: cardScale,
-                  y: cardY,
+                  opacity: stageOpacity,
+                  scale: stageScale,
+                  y: stageY,
                 }
           }
         >
           <div className="about-manifesto-grid absolute inset-0" aria-hidden="true" />
           <div className="about-manifesto-vignette absolute inset-0" aria-hidden="true" />
 
-          <div className="relative z-[1] flex h-full w-full flex-col">
-            <motion.p
-              className="site-kicker about-manifesto-kicker"
-              style={reducedMotion ? undefined : { opacity: eyebrowOpacity }}
-            >
-              Обо мне
-            </motion.p>
-
-            <div className="flex flex-1 items-center justify-center py-10 sm:py-12 md:py-16">
-              <div className="relative w-full max-w-[1540px] text-center">
-                <p className="about-manifesto-text about-manifesto-text--base">
-                  {manifestoText}
-                </p>
-
-                <motion.p
-                  aria-hidden="true"
-                  className="about-manifesto-text about-manifesto-text--reveal absolute inset-0"
-                  style={
-                    reducedMotion
-                      ? undefined
-                      : {
-                          clipPath: revealClipPath,
-                          filter: revealFilter,
-                          opacity: revealOpacity,
-                          y: revealY,
-                        }
-                  }
-                >
-                  {manifestoText}
-                </motion.p>
-              </div>
+          <div className="relative z-[1] flex w-full items-center justify-center py-14 sm:py-16 md:py-20">
+            <div className="w-full max-w-[1540px] text-center">
+              {reducedMotion ? (
+                <p className="about-manifesto-text about-manifesto-text--static">{manifestoText}</p>
+              ) : (
+                <HorizontalCharacterReveal
+                  className="about-manifesto-text"
+                  progress={textProgress}
+                  text={manifestoText}
+                />
+              )}
             </div>
           </div>
         </motion.div>

@@ -1,9 +1,10 @@
 export type Service = {
   number: string;
   name: string;
-  lead: string;
+  summary: string;
   signal: string;
   scope: [string, string, string];
+  variant: 'immersive' | 'system' | 'identity';
 };
 
 export type Project = {
@@ -44,23 +45,26 @@ export const services: Service[] = [
   {
     number: '01',
     name: 'Иммерсивные лендинги',
-    lead: 'Первый экран, движение и структура собираются в цельное впечатление о бренде.',
+    summary: 'Первый экран, движение и структура собираются в цельное впечатление о бренде.',
     signal: 'Запуск / вау-эффект',
     scope: ['Арт-дирекшн', '3D и motion', 'Адаптивная сборка'],
+    variant: 'immersive',
   },
   {
     number: '02',
     name: 'Комплексные сайты под ключ',
-    lead: 'От логики страниц до финального запуска: сайт работает как управляемая digital-система.',
+    summary: 'От логики страниц до финального запуска: сайт работает как управляемая digital-система.',
     signal: 'Система / запуск',
     scope: ['UX-структура', 'Frontend', 'Интеграции'],
+    variant: 'system',
   },
   {
     number: '03',
     name: 'Брендинг и визуальная система',
-    lead: 'Айдентика превращается в набор правил, который держит стиль на каждом носителе.',
+    summary: 'Айдентика превращается в набор правил, который держит стиль на каждом носителе.',
     signal: 'Образ / узнаваемость',
     scope: ['Логотип', 'Гайдлайн', 'Digital-носители'],
+    variant: 'identity',
   },
 ];
 
