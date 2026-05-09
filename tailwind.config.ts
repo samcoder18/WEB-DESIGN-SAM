@@ -7,6 +7,7 @@ export default {
       fontFamily: {
         display: ['Unbounded', 'Manrope', 'sans-serif'],
         sans: ['Manrope', 'sans-serif'],
+        editorial: ['Instrument Serif', 'serif'],
       },
       colors: {
         ink: '#0C0C0C',

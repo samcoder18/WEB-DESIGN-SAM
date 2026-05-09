@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import {
   motion,
   useMotionTemplate,
-  useMotionValueEvent,
   useReducedMotion,
   useScroll,
   useTransform,
@@ -36,33 +35,21 @@ export function JourneyCardsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const prefersReducedMotion = useReducedMotion();
   const reducedMotion = Boolean(prefersReducedMotion);
-  const [titleVisible, setTitleVisible] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end end'],
   });
 
-  const titleY = useTransform(scrollYProgress, [0.18, 0.26], [24, 0]);
+  const titleY = useTransform(scrollYProgress, [0.12, 0.24], [148, 0]);
+  const titleOpacity = useTransform(scrollYProgress, [0.12, 0.18, 0.24], [0, 0.14, 1]);
+  const titleScale = useTransform(scrollYProgress, [0.12, 0.24], [0.92, 1]);
+  const titleBlur = useTransform(scrollYProgress, [0.12, 0.24], [12, 0]);
+  const titleFilter = useMotionTemplate`blur(${titleBlur}px)`;
   const stageScale = useTransform(scrollYProgress, [0, 0.24], [1.12, 1]);
   const stageY = useTransform(scrollYProgress, [0, 0.24], [30, 0]);
   const stageGap = useTransform(scrollYProgress, [0.3, 0.46, 0.88], [0, 28, 42]);
   const stageGapPx = useMotionTemplate`${stageGap}px`;
-
-  useEffect(() => {
-    if (reducedMotion) {
-      setTitleVisible(true);
-      return;
-    }
-
-    setTitleVisible(scrollYProgress.get() >= 0.2);
-  }, [reducedMotion, scrollYProgress]);
-
-  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (!reducedMotion) {
-      setTitleVisible(latest >= 0.2);
-    }
-  });
 
   const frontRotateY = useTransform(scrollYProgress, [0.52, 0.68], [0, -180]);
   const frontOpacity = useTransform(scrollYProgress, (value) => {
@@ -121,21 +108,21 @@ export function JourneyCardsSection() {
         <div className="journey-cards-section__ambient" aria-hidden="true" />
 
         <motion.div
-          className={`journey-cards-section__header${
-            titleVisible ? ' journey-cards-section__header--visible' : ''
-          }`}
+          className="journey-cards-section__header"
           transition={{ duration: 0 }}
           style={
             reducedMotion
               ? undefined
               : {
+                  filter: titleFilter,
+                  opacity: titleOpacity,
+                  scale: titleScale,
                   y: titleY,
                 }
           }
         >
-          <p className="journey-cards-section__eyebrow">Что можно собрать</p>
           <h2 id="services-heading" className="journey-cards-section__title">
-            Услуги
+            Что собрать вокруг вашей идеи?
           </h2>
         </motion.div>
 
