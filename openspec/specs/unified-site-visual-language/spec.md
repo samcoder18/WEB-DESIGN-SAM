@@ -51,3 +51,37 @@ The site SHALL preserve existing content, section order, anchors, assets, and bu
 - **WHEN** a user scrolls through the animated about section and stacked project cards
 - **THEN** existing Framer Motion behavior remains functional while the updated typography and buttons fit within their containers
 
+### Requirement: Services Block Has A Signature Premium Treatment
+The site SHALL allow the services block to become a distinct authored moment while staying aligned with the existing display typography, readable body hierarchy, and premium interaction family.
+
+#### Scenario: Services typography remains aligned
+- **WHEN** a user views the upgraded services block
+- **THEN** its heading, indexes, labels, service names, descriptions, and metadata use the existing Manrope/Unbounded system with zero letter-spacing, responsive sizing, and sufficient contrast on the light surface
+
+#### Scenario: Services visual detail is purposeful
+- **WHEN** the services block introduces new lines, rails, panels, badges, or accent treatments
+- **THEN** each detail supports scanability, hierarchy, or feedback rather than acting as unrelated decoration
+
+#### Scenario: Services interactions match the site
+- **WHEN** service items are hovered, focused, tapped, or viewed with reduced-motion preferences
+- **THEN** interaction states feel related to the existing premium controls and do not conflict with the site's focus visibility, touch target, or reduced-motion conventions
+
+#### Scenario: Site identity remains cohesive
+- **WHEN** the user scrolls from the dark about/value section through services into projects
+- **THEN** the upgraded services section feels like part of the same portfolio identity and does not introduce a one-off palette, unrelated font, generic card-grid aesthetic, or decorative WebGL effect
+
+### Requirement: Navbar Follows The Premium Visual Language
+The site SHALL treat the navbar as part of the same premium visual system as the updated typography and button components.
+
+#### Scenario: Navbar typography aligns with the site
+- **WHEN** the navbar is rendered
+- **THEN** its labels use the existing font system, small readable sizing, zero letter-spacing, and a restrained weight that does not compete with section headings or CTAs
+
+#### Scenario: Navbar interactions feel consistent
+- **WHEN** a navbar link is hovered, focused, or tapped
+- **THEN** its transition timing, focus visibility, and color treatment feel consistent with the site's premium controls while avoiding layout shift
+
+#### Scenario: Navbar does not disturb section compositions
+- **WHEN** the user scrolls through the hero, animated about section, services section, and project cards
+- **THEN** the navbar remains visually lightweight and does not hide important text, media, buttons, or sticky-card content
+
