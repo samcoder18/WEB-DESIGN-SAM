@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --site-background-base: #100e0e;
-  --site-ink-strong: #100e0e;
+  --site-background-base: #050607;
+  --site-ink-strong: #050607;
   --site-font-heading: 'TT Firs Neue', 'TT Firs Neue Trial', 'TT Firs Neue Trl', 'Unbounded', sans-serif;
   --site-font-body: 'ALS Hauss', 'ALS Hauss Hairline', 'ALS Hauss Thin', 'Manrope', sans-serif;
   --site-font-editorial: var(--site-font-body);
@@ -501,10 +501,10 @@ section[id] {
 
 .journey-card__front {
   z-index: 1;
-  background: #bc1714;
+  background: linear-gradient(180deg, #262b31 0%, #111418 100%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 130, 118, 0.45),
-    inset 0 -1px 0 rgba(42, 0, 0, 0.5);
+    inset 0 1px 0 rgba(244, 248, 251, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.42);
 }
 
 .journey-card__front--left {
@@ -532,7 +532,7 @@ section[id] {
   left: 0;
   width: 300%;
   overflow: hidden;
-  background: #170808;
+  background: #090b0d;
 }
 
 .journey-card__front--middle .journey-card__placeholder {
@@ -1055,12 +1055,12 @@ section[id] {
   background: var(--site-ink-strong);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 6px 16px rgba(16, 14, 14, 0.22);
+    0 6px 16px rgba(5, 6, 7, 0.22);
   transition: background 300ms ease;
 }
 
 .premium-site-cta:hover .premium-site-cta__icon {
-  background: #1c1818;
+  background: #111214;
 }
 
 .premium-site-cta__aura,

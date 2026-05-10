@@ -10,7 +10,7 @@ export default {
         editorial: ['ALS Hauss', 'ALS Hauss Hairline', 'ALS Hauss Thin', 'Manrope', 'sans-serif'],
       },
       colors: {
-        ink: '#100E0E',
+        ink: '#050607',
         frost: '#D7E2EA',
       },
     },
