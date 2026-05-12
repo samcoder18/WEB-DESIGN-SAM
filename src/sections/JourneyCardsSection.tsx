@@ -1,32 +1,26 @@
 import { useRef } from 'react';
-import {
-  motion,
-  useMotionTemplate,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 
 import { type Service, services } from '../data/portfolio';
 
 type JourneyCard = {
-  eyebrow: string;
-  features: [string, string, string];
-  summary: string;
+  assetSrc: string;
   title: string;
   variant: Service['variant'];
   visual: 'left' | 'middle' | 'right';
 };
 
-const serviceTitles = ['Иммерсивные\nлендинги', 'Сайты\nпод ключ', 'Брендинг\nи система'] as const;
+const serviceTitles = ['Иммерсивные лендинги', 'Сайты под ключ', 'Брендинг и система'] as const;
 const cardVisuals: JourneyCard['visual'][] = ['left', 'middle', 'right'];
-const servicesPanoramaImageUrl = '/services-panorama.png';
+const serviceCardAssetUrls: Record<Service['variant'], string> = {
+  immersive: '/services-card-silver.png',
+  system: '/services-card-red.png',
+  identity: '/services-card-black.png',
+};
 
 const journeyCards: JourneyCard[] = services.map((service, index) => ({
-  eyebrow: `${service.number} / ${service.signal}`,
+  assetSrc: serviceCardAssetUrls[service.variant],
   title: serviceTitles[index] ?? service.name,
-  summary: service.summary,
-  features: service.scope,
   variant: service.variant,
   visual: cardVisuals[index] ?? 'left',
 }));
@@ -41,15 +35,8 @@ export function JourneyCardsSection() {
     offset: ['start start', 'end end'],
   });
 
-  const titleY = useTransform(scrollYProgress, [0.12, 0.24], [148, 0]);
-  const titleOpacity = useTransform(scrollYProgress, [0.12, 0.18, 0.24], [0, 0.14, 1]);
-  const titleScale = useTransform(scrollYProgress, [0.12, 0.24], [0.92, 1]);
-  const titleBlur = useTransform(scrollYProgress, [0.12, 0.24], [12, 0]);
-  const titleFilter = useMotionTemplate`blur(${titleBlur}px)`;
   const stageScale = useTransform(scrollYProgress, [0, 0.24], [1.24, 1]);
   const stageY = useTransform(scrollYProgress, [0, 0.24], [44, 0]);
-  const stageGap = useTransform(scrollYProgress, [0.3, 0.46, 0.88], [0, 36, 56]);
-  const stageGapPx = useMotionTemplate`${stageGap}px`;
 
   const frontRotateY = useTransform(scrollYProgress, [0.52, 0.68], [0, -180]);
   const frontOpacity = useTransform(scrollYProgress, (value) => {
@@ -76,26 +63,31 @@ export function JourneyCardsSection() {
     return (value - 0.58) / 0.1;
   });
 
-  const leftX = useTransform(scrollYProgress, [0.18, 0.34, 0.72, 0.9], [0, -24, -96, 0]);
+  const leftX = useTransform(scrollYProgress, [0.18, 0.34, 0.72, 0.9], [0, -10, 10, 54]);
   const middleX = useTransform(scrollYProgress, [0.18, 0.34], [0, 0]);
-  const rightX = useTransform(scrollYProgress, [0.18, 0.34, 0.72, 0.9], [0, 24, 96, 0]);
+  const rightX = useTransform(scrollYProgress, [0.18, 0.34, 0.72, 0.9], [0, 10, -10, -54]);
 
-  const leftY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 18, 0]);
-  const middleY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, -4, 0]);
-  const rightY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 16, 0]);
+  const leftY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 20, 52]);
+  const middleY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, -6, -14]);
+  const rightY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 18, 48]);
 
-  const leftRotateZ = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, -10, 0]);
+  const leftRotateZ = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, -10, -14]);
   const middleRotateZ = useTransform(scrollYProgress, [0.58, 0.76], [0, 0]);
-  const rightRotateZ = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 9, 0]);
+  const rightRotateZ = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 9, 13]);
 
-  const leftRotateY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 15, 0]);
+  const leftRotateY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, 1, 0]);
   const middleRotateY = useTransform(scrollYProgress, [0.58, 0.76], [0, 0]);
-  const rightRotateY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, -17, 0]);
+  const rightRotateY = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [0, -1, 0]);
+
+  const leftScale = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [1, 1.09, 1.22]);
+  const middleScale = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [1, 1.14, 1.28]);
+  const rightScale = useTransform(scrollYProgress, [0.58, 0.76, 0.9], [1, 1.09, 1.22]);
 
   const xValues = [leftX, middleX, rightX];
   const yValues = [leftY, middleY, rightY];
   const rotateZValues = [leftRotateZ, middleRotateZ, rightRotateZ];
   const rotateYValues = [leftRotateY, middleRotateY, rightRotateY];
+  const scaleValues = [leftScale, middleScale, rightScale];
 
   return (
     <section
@@ -108,25 +100,6 @@ export function JourneyCardsSection() {
         <div className="journey-cards-section__ambient" aria-hidden="true" />
 
         <motion.div
-          className="journey-cards-section__header"
-          transition={{ duration: 0 }}
-          style={
-            reducedMotion
-              ? undefined
-              : {
-                  filter: titleFilter,
-                  opacity: titleOpacity,
-                  scale: titleScale,
-                  y: titleY,
-                }
-          }
-        >
-          <h2 id="services-heading" className="journey-cards-section__title">
-            Что собрать вокруг вашей идеи?
-          </h2>
-        </motion.div>
-
-        <motion.div
           className={`journey-cards-stage${
             reducedMotion ? ' journey-cards-stage--reduced' : ''
           }`}
@@ -135,7 +108,6 @@ export function JourneyCardsSection() {
             reducedMotion
               ? undefined
               : {
-                  gap: stageGapPx,
                   scale: stageScale,
                   y: stageY,
                 }
@@ -153,72 +125,58 @@ export function JourneyCardsSection() {
                   : {
                       rotateY: rotateYValues[index],
                       rotateZ: rotateZValues[index],
+                      scale: scaleValues[index],
                       x: xValues[index],
                       y: yValues[index],
-                      zIndex: index === 1 ? 3 : 2,
+                      zIndex: index === 1 ? 4 : 2,
                     }
               }
             >
-              <motion.div
-                className={`journey-card__face journey-card__front journey-card__front--${card.visual}`}
-                transition={{ duration: 0 }}
-                style={
-                  reducedMotion
-                    ? undefined
-                    : {
-                        opacity: frontOpacity,
-                        rotateY: frontRotateY,
-                      }
-                }
-              >
-                <div className="journey-card__placeholder" aria-hidden="true">
-                  <img
-                    alt=""
-                    aria-hidden="true"
-                    className="journey-card__placeholder-image"
-                    decoding="async"
-                    draggable="false"
-                    src={servicesPanoramaImageUrl}
-                  />
-                </div>
-              </motion.div>
+              <div className="journey-card__shell">
+                <motion.div
+                  className={`journey-card__face journey-card__front journey-card__front--${card.visual}`}
+                  transition={{ duration: 0 }}
+                  style={
+                    reducedMotion
+                      ? undefined
+                      : {
+                          opacity: frontOpacity,
+                          rotateY: frontRotateY,
+                        }
+                  }
+                >
+                  <div className="journey-card__placeholder" aria-hidden="true">
+                    <span className="journey-card__surface" aria-hidden="true" />
+                  </div>
+                </motion.div>
 
-              <motion.div
-                className={`journey-card__face journey-card__back journey-card__back--${card.variant}`}
-                transition={{ duration: 0 }}
-                style={
-                  reducedMotion
-                    ? undefined
-                    : {
-                        opacity: backOpacity,
-                        rotateY: backRotateY,
-                      }
-                }
-              >
-                <div className="journey-card__head">
-                  <p className="journey-card__eyebrow">{card.eyebrow}</p>
-                  <h3 id={`journey-card-${index + 1}-title`} className="journey-card__title">
-                    {card.title}
-                  </h3>
-                </div>
-
-                <div className="journey-card__body">
-                  <div className="journey-card__divider" aria-hidden="true" />
-
-                  <ul
-                    className="journey-card__features"
-                    aria-label={`Что входит: ${card.title.replace('\n', ' ')}`}
-                  >
-                    {card.features.map((feature) => (
-                      <li key={feature}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="journey-card__dock">
-                  <p className="journey-card__description">{card.summary}</p>
-                </div>
-              </motion.div>
+                <motion.div
+                  className={`journey-card__face journey-card__back journey-card__back--${card.variant}`}
+                  transition={{ duration: 0 }}
+                  style={
+                    reducedMotion
+                      ? undefined
+                      : {
+                          opacity: backOpacity,
+                          rotateY: backRotateY,
+                        }
+                  }
+                >
+                  <div className="journey-card__screen">
+                    <span id={`journey-card-${index + 1}-title`} className="sr-only">
+                      {card.title}
+                    </span>
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      className={`journey-card__asset journey-card__asset--${card.variant}`}
+                      decoding="async"
+                      draggable="false"
+                      src={card.assetSrc}
+                    />
+                  </div>
+                </motion.div>
+              </div>
             </motion.article>
           ))}
         </motion.div>

@@ -4,6 +4,7 @@ import { HeroSection } from './sections/HeroSection';
 import { JourneyCardsSection } from './sections/JourneyCardsSection';
 import { MarqueeSection } from './sections/MarqueeSection';
 import { ProjectsSection } from './sections/ProjectsSection';
+import { StatsSection } from './sections/StatsSection';
 
 export default function App() {
   return (
@@ -19,6 +20,14 @@ export default function App() {
         <HeroSection />
         <MarqueeSection />
         <AboutSection />
+        <StatsSection />
+        <section className="section-bridge-heading px-4 sm:px-6 md:px-10">
+          <div className="section-bridge-heading__inner">
+            <h2 id="services-heading" className="section-bridge-heading__title">
+              Услуги
+            </h2>
+          </div>
+        </section>
         <JourneyCardsSection />
         <ProjectsSection />
       </main>
