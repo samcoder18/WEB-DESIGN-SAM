@@ -1,11 +1,15 @@
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 type ContactButtonProps = {
   className?: string;
   label?: string;
   showIcon?: boolean;
+  to?: string;
 };
+
+const MotionLink = motion.create(Link);
 
 const premiumButtonVariants: Variants = {
   rest: {
@@ -84,6 +88,7 @@ export function ContactButton({
   className = '',
   label = 'Связаться',
   showIcon = true,
+  to = '/contact',
 }: ContactButtonProps) {
   const shouldReduceMotion = useReducedMotion();
   const baseClasses =
@@ -92,8 +97,8 @@ export function ContactButton({
     'premium-site-cta min-h-[3.25rem] gap-3 px-6 py-3.5 font-sans text-[0.72rem] font-bold tracking-normal sm:min-h-14 sm:px-8 sm:text-xs md:min-h-[3.6rem] md:px-9 md:text-sm';
 
   return (
-    <motion.button
-      type="button"
+    <MotionLink
+      to={to}
       className={`${baseClasses} ${variantClasses} ${className}`}
       variants={shouldReduceMotion ? undefined : premiumButtonVariants}
       initial={shouldReduceMotion ? undefined : 'rest'}
@@ -133,6 +138,6 @@ export function ContactButton({
           </motion.span>
         </motion.span>
       )}
-    </motion.button>
+    </MotionLink>
   );
 }

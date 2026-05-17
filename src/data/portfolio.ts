@@ -1,12 +1,3 @@
-export type Service = {
-  number: string;
-  name: string;
-  summary: string;
-  signal: string;
-  scope: [string, string, string];
-  variant: 'immersive' | 'system' | 'identity';
-};
-
 export type Project = {
   number: string;
   name: string;
@@ -40,33 +31,6 @@ export const marqueeImages = [
   'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
   'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
 ] as const;
-
-export const services: Service[] = [
-  {
-    number: '01',
-    name: 'Иммерсивные лендинги',
-    summary: 'Первый экран, движение и структура собираются в цельное впечатление о бренде.',
-    signal: 'Запуск / вау-эффект',
-    scope: ['Арт-дирекшн', '3D и motion', 'Адаптивная сборка'],
-    variant: 'immersive',
-  },
-  {
-    number: '02',
-    name: 'Комплексные сайты под ключ',
-    summary: 'От логики страниц до финального запуска: сайт работает как управляемая digital-система.',
-    signal: 'Система / запуск',
-    scope: ['UX-структура', 'Frontend', 'Интеграции'],
-    variant: 'system',
-  },
-  {
-    number: '03',
-    name: 'Брендинг и визуальная система',
-    summary: 'Айдентика превращается в набор правил, который держит стиль на каждом носителе.',
-    signal: 'Образ / узнаваемость',
-    scope: ['Логотип', 'Гайдлайн', 'Digital-носители'],
-    variant: 'identity',
-  },
-];
 
 export const projects: Project[] = [
   {

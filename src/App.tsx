@@ -1,10 +1,11 @@
+import { Route, Routes } from 'react-router-dom';
+import { ScrollToHash } from './components/ScrollToHash';
+import FooterSection from './components/ui/footer';
 import { SiteNavbar } from './components/SiteNavbar';
-import { AboutSection } from './sections/AboutSection';
-import { HeroSection } from './sections/HeroSection';
-import { JourneyCardsSection } from './sections/JourneyCardsSection';
-import { MarqueeSection } from './sections/MarqueeSection';
-import { ProjectsSection } from './sections/ProjectsSection';
-import { StatsSection } from './sections/StatsSection';
+import { BlogPage } from './pages/BlogPage';
+import { BlogPostPage } from './pages/BlogPostPage';
+import { ContactPage } from './pages/ContactPage';
+import { HomePage } from './pages/HomePage';
 
 export default function App() {
   return (
@@ -15,22 +16,17 @@ export default function App() {
       >
         Перейти к содержанию
       </a>
+      <ScrollToHash />
       <SiteNavbar />
       <main id="content" className="site-background-surface min-h-screen overflow-x-clip">
-        <HeroSection />
-        <MarqueeSection />
-        <AboutSection />
-        <StatsSection />
-        <section className="section-bridge-heading px-4 sm:px-6 md:px-10">
-          <div className="section-bridge-heading__inner">
-            <h2 id="services-heading" className="section-bridge-heading__title">
-              Услуги
-            </h2>
-          </div>
-        </section>
-        <JourneyCardsSection />
-        <ProjectsSection />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
       </main>
+      <FooterSection />
     </>
   );
 }

@@ -1,8 +1,8 @@
-const manifestoHeading = ['Образ,', 'который', 'помнят.'] as const;
-const manifestoSignals = ['Айдентика', '3D-сцены', 'Digital-опыт'] as const;
+const manifestoHeading = ['Образ', 'сильного', 'бренда'] as const;
+const manifestoSignals = ['Веб-дизайн', 'Айдентика', 'Digital-опыт'] as const;
 const manifestoCopy = [
-  'Я создаю визуальные идентичности, 3D-сцены и digital-опыт для проектов, которым важно выглядеть дороже, понятнее и сильнее конкурентов.',
-  'Помогаю собрать разрозненную идею в цельную визуальную систему: от первого впечатления до деталей интерфейса, презентации и digital-присутствия. Чтобы бренд не просто выглядел красиво, а вызывал доверие, удерживал внимание и быстрее объяснял свою ценность.',
+  'Проектирую веб-дизайн для брендов и продуктов, которым нужен не просто красивый сайт, а сильный digital-образ.',
+  'От первого экрана до визуальной системы в целом помогаю собрать цельное впечатление, чтобы бренд воспринимался дороже, понятнее и убедительнее.',
 ] as const;
 
 export function AboutSection() {
@@ -26,10 +26,14 @@ export function AboutSection() {
           <div className="relative z-[1] w-full py-14 sm:py-16 md:py-20">
             <div className="about-manifesto-layout">
               <div className="about-manifesto-lead">
-                <p className="about-manifesto-kicker">01 / визуальная система</p>
                 <p className="about-manifesto-heading">
-                  {manifestoHeading.map((line) => (
-                    <span key={line}>{line}</span>
+                  {manifestoHeading.map((line, index) => (
+                    <span
+                      key={line}
+                      className={index === manifestoHeading.length - 1 ? 'about-manifesto-heading-accent' : undefined}
+                    >
+                      {line}
+                    </span>
                   ))}
                 </p>
               </div>

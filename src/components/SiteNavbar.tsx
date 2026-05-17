@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
-  { label: 'Услуги', href: '#услуги' },
-  { label: 'Работы', href: '#проекты' },
-  { label: 'Отзывы', href: '#обо-мне' },
+  { label: 'Обо мне', href: '/#обо-мне' },
+  { label: 'Работы', href: '/#проекты' },
+  { label: 'Блог', href: '/blog' },
+  { label: 'Контакты', href: '/contact' },
 ] as const;
 
 const compactScrollOffset = 96;
@@ -12,6 +14,7 @@ const compactScrollOffset = 96;
 export function SiteNavbar() {
   const shouldReduceMotion = Boolean(useReducedMotion());
   const { scrollY } = useScroll();
+  const location = useLocation();
   const [isCompact, setIsCompact] = useState(false);
 
   useEffect(() => {
@@ -44,23 +47,32 @@ export function SiteNavbar() {
         }
         transition={{ delay: 0.18, duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
       >
-        <a className="premium-site-navbar__brand" href="#content" aria-label="Sam, перейти наверх">
+        <Link className="premium-site-navbar__brand" to="/" aria-label="Sam, перейти наверх">
           Sam.
-        </a>
+        </Link>
 
         <ul className="premium-site-navbar__list" role="list">
           {navItems.map((item) => (
             <li key={item.href} className="premium-site-navbar__item">
-              <a className="premium-site-navbar__link" href={item.href}>
+              <Link
+                className="premium-site-navbar__link"
+                to={item.href}
+                aria-current={
+                  (item.href === '/blog' && location.pathname.startsWith('/blog')) ||
+                  (item.href === '/contact' && location.pathname === '/contact')
+                    ? 'page'
+                    : undefined
+                }
+              >
                 <span className="premium-site-navbar__label">{item.label}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a className="premium-site-navbar__cta" href="#услуги">
+        <Link className="premium-site-navbar__cta" to="/contact">
           Связаться
-        </a>
+        </Link>
       </motion.nav>
     </div>
   );
