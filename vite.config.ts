@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export default defineConfig({
+  base: '/WEB-DESIGN-SAM/',
   plugins: [react()],
   resolve: {
     alias: {
