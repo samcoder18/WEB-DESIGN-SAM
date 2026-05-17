@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  --site-background-base: #050607;
-  --site-ink-strong: #050607;
+  --site-background-base: #0a0c12;
+  --site-ink-strong: #0a0c12;
   --site-font-heading: 'TT Firs Neue', 'TT Firs Neue Trial', 'TT Firs Neue Trl', 'Unbounded', sans-serif;
   --site-font-body: 'ALS Hauss', 'ALS Hauss Hairline', 'ALS Hauss Thin', 'Manrope', sans-serif;
   --site-font-editorial: var(--site-font-body);
@@ -125,7 +125,7 @@ section[id] {
   border: 1px solid rgba(244, 248, 251, 0.1);
   border-radius: var(--navbar-radius);
   padding: 0 var(--navbar-inline-padding);
-  background: rgba(5, 6, 7, 0.62);
+  background: rgba(10, 12, 18, 0.62);
   box-shadow:
     0 12px 28px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.07);
@@ -151,7 +151,7 @@ section[id] {
   width: min(calc(100vw - 1.5rem), 47.35rem);
   min-height: var(--navbar-height);
   border-color: rgba(244, 248, 251, 0.1);
-  background: rgba(5, 6, 7, 0.72);
+  background: rgba(10, 12, 18, 0.72);
   box-shadow:
     0 14px 34px rgba(0, 0, 0, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.07);
@@ -523,7 +523,7 @@ section[id] {
 
 .services-list {
   display: grid;
-  border-top: 1px solid rgba(5, 6, 7, 0.13);
+  border-top: 1px solid rgba(10, 12, 18, 0.13);
 }
 
 .services-row {
@@ -532,7 +532,7 @@ section[id] {
   align-items: center;
   min-width: 0;
   gap: clamp(1.8rem, 3.6vw, 4rem);
-  border-bottom: 1px solid rgba(5, 6, 7, 0.12);
+  border-bottom: 1px solid rgba(10, 12, 18, 0.12);
   padding: clamp(2.2rem, 4.2vw, 3.25rem) 0;
 }
 
@@ -568,7 +568,7 @@ section[id] {
 
 .services-row__lead {
   max-width: 44rem;
-  color: rgba(5, 6, 7, 0.5);
+  color: rgba(10, 12, 18, 0.5);
   font-family: var(--site-font-body);
   font-size: clamp(0.82rem, 1vw, 0.94rem);
   font-weight: 560;
@@ -1335,7 +1335,7 @@ section[id] {
   background: var(--site-ink-strong);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 6px 16px rgba(5, 6, 7, 0.22);
+    0 6px 16px rgba(10, 12, 18, 0.22);
   transition: background 300ms ease;
 }
 
@@ -1435,7 +1435,7 @@ section[id] {
 }
 
 .premium-secondary-cta:hover .premium-secondary-cta__icon {
-  color: #050607;
+  color: #0a0c12;
   background: #ffffff;
 }
 

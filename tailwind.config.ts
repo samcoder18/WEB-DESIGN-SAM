@@ -12,7 +12,7 @@ export default {
       colors: {
         border: 'hsl(var(--border) / <alpha-value>)',
         input: 'hsl(var(--input) / <alpha-value>)',
-        ink: '#050607',
+        ink: '#0A0C12',
         frost: '#D7E2EA',
         background: 'hsl(var(--background) / <alpha-value>)',
         foreground: 'hsl(var(--foreground) / <alpha-value>)',
