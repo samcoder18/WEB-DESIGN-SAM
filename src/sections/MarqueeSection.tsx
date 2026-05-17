@@ -50,7 +50,7 @@ export function MarqueeSection() {
     <section
       ref={sectionRef}
       aria-hidden="true"
-      className="overflow-hidden bg-transparent pb-10 pt-24 sm:pt-32 md:pt-40"
+      className="overflow-hidden bg-transparent pb-16 pt-28 sm:pb-20 sm:pt-36 md:pb-24 md:pt-44"
     >
       <div className="flex flex-col gap-3">
         <motion.div

@@ -88,7 +88,7 @@ export function ContactButton({
   className = '',
   label = 'Связаться',
   showIcon = true,
-  to = '/contact',
+  to = '/#контакты',
 }: ContactButtonProps) {
   const shouldReduceMotion = useReducedMotion();
   const baseClasses =

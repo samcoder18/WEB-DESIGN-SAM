@@ -3,10 +3,9 @@ import { motion, useMotionValueEvent, useReducedMotion, useScroll } from 'framer
 import { Link, useLocation } from 'react-router-dom';
 
 const navItems = [
-  { label: 'Обо мне', href: '/#обо-мне' },
+  { label: 'Главная', href: '/' },
   { label: 'Работы', href: '/#проекты' },
   { label: 'Блог', href: '/blog' },
-  { label: 'Контакты', href: '/contact' },
 ] as const;
 
 const compactScrollOffset = 96;
@@ -58,8 +57,8 @@ export function SiteNavbar() {
                 className="premium-site-navbar__link"
                 to={item.href}
                 aria-current={
-                  (item.href === '/blog' && location.pathname.startsWith('/blog')) ||
-                  (item.href === '/contact' && location.pathname === '/contact')
+                  (item.href === '/' && location.pathname === '/') ||
+                  (item.href === '/blog' && location.pathname.startsWith('/blog'))
                     ? 'page'
                     : undefined
                 }
@@ -70,7 +69,7 @@ export function SiteNavbar() {
           ))}
         </ul>
 
-        <Link className="premium-site-navbar__cta" to="/contact">
+        <Link className="premium-site-navbar__cta" to="/#контакты">
           Связаться
         </Link>
       </motion.nav>

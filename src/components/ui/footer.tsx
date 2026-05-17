@@ -1,90 +1,71 @@
-import {
-  Feather,
-  Globe,
-  Link as LinkIcon,
-  MessageCircle,
-  Send,
-  Share2,
-} from 'lucide-react';
-
-const links = [
-  {
-    title: 'Возможности',
-    href: '#',
-  },
-  {
-    title: 'Решения',
-    href: '#',
-  },
-  {
-    title: 'Клиенты',
-    href: '#',
-  },
-  {
-    title: 'Цены',
-    href: '#',
-  },
-  {
-    title: 'Помощь',
-    href: '#',
-  },
-  {
-    title: 'Обо мне',
-    href: '#',
-  },
-];
-
-const socialLinks = [
-  { label: 'Social Link 1', href: '#', Icon: Share2 },
-  { label: 'Social Link 2', href: '#', Icon: MessageCircle },
-  { label: 'Social Link 3', href: '#', Icon: LinkIcon },
-  { label: 'Social Link 4', href: '#', Icon: Globe },
-  { label: 'Social Link 5', href: '#', Icon: Send },
-  { label: 'Social Link 6', href: '#', Icon: Feather },
-];
+const contactLinks = [
+  { label: 'instagram', href: 'https://instagram.com' },
+  { label: 'facebook', href: 'https://facebook.com' },
+  { label: 'artstation', href: 'https://www.artstation.com' },
+  { label: 'deviantart', href: 'https://www.deviantart.com' },
+] as const;
 
 export default function FooterSection() {
   return (
-    <footer className="relative z-10 px-5 pb-10 pt-8 sm:px-8 sm:pb-12 md:px-10 md:pb-16">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-[32px] border border-[rgba(244,248,251,0.1)] bg-[rgba(5,6,7,0.62)] px-6 py-10 text-frost shadow-[0_12px_28px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-[18px] backdrop-saturate-[104%] sm:rounded-[40px] sm:px-8 md:px-10 md:py-12">
-        <a
-          href="/"
-          aria-label="Перейти на главную"
-          className="mx-auto flex w-fit items-center justify-center text-center font-display text-lg font-extrabold uppercase tracking-[0.16em] text-white transition duration-200 hover:opacity-80"
-        >
-          Sam
-        </a>
+    <footer className="relative z-10 bg-[#eef3f1]">
+      <div className="overflow-hidden rounded-t-[56px] bg-[#06070a] px-4 pb-6 pt-10 sm:rounded-t-[68px] sm:px-6 sm:pb-8 sm:pt-12 md:px-8 md:pb-10 md:pt-14">
+        <div className="mx-auto grid w-full max-w-[1320px] gap-10 text-frost md:grid-cols-[minmax(0,1.2fr)_auto] md:items-start md:gap-20 lg:gap-28">
+          <a
+            href="/"
+            aria-label="Перейти на главную"
+            className="w-fit whitespace-pre-line text-left font-display text-[clamp(3.4rem,8vw,6.3rem)] font-black uppercase leading-[0.82] tracking-[-0.07em] text-transparent [text-stroke:1px_rgba(244,248,251,0.94)] [-webkit-text-stroke:1px_rgba(244,248,251,0.94)]"
+          >
+            ALEX{"\n"}TURNER
+          </a>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 text-sm">
-          {links.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              className="block text-white/58 transition duration-150 hover:text-white"
-            >
-              <span>{link.title}</span>
-            </a>
-          ))}
+          <div className="grid gap-7 text-left sm:grid-cols-2 sm:gap-12 md:justify-self-end md:gap-16">
+            <div className="grid content-start gap-3">
+              <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-white/44">
+                Social
+              </p>
+
+              <div className="grid gap-2">
+                {contactLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-fit text-[0.98rem] font-semibold leading-6 text-white/84 transition duration-200 hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid content-start gap-3">
+              <p className="text-[0.72rem] font-black uppercase tracking-[0.2em] text-white/44">
+                Contact
+              </p>
+
+              <div className="grid gap-2">
+                <a
+                  href="mailto:alex@3dturner.com"
+                  className="w-fit text-[0.98rem] font-semibold leading-6 text-white/84 transition duration-200 hover:text-white"
+                >
+                  alex@3dturner.com
+                </a>
+                <a
+                  href="tel:+15551234567"
+                  className="w-fit text-[0.98rem] font-semibold leading-6 text-white/84 transition duration-200 hover:text-white"
+                >
+                  +1 (555) 123-4567
+                </a>
+                <p className="max-w-[18ch] text-[0.98rem] font-semibold leading-6 text-white/84">
+                  123 Creative Lane, Suite 45
+                  <br />
+                  Design City, CA 90210
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm">
-          {socialLinks.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={label}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-[rgba(244,248,251,0.1)] bg-[rgba(255,255,255,0.03)] text-white/70 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] transition duration-200 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/8 hover:text-white"
-            >
-              <Icon className="h-5 w-5" />
-            </a>
-          ))}
-        </div>
-
-        <span className="mt-8 block text-center text-sm text-white/45">
-          © {new Date().getFullYear()} Tailark. Все права защищены
-        </span>
       </div>
     </footer>
   );

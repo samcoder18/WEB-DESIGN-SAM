@@ -1,10 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { ScrollToHash } from './components/ScrollToHash';
 import FooterSection from './components/ui/footer';
 import { SiteNavbar } from './components/SiteNavbar';
 import { BlogPage } from './pages/BlogPage';
 import { BlogPostPage } from './pages/BlogPostPage';
-import { ContactPage } from './pages/ContactPage';
 import { HomePage } from './pages/HomePage';
 
 export default function App() {
@@ -23,7 +22,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact" element={<Navigate to="/#контакты" replace />} />
         </Routes>
       </main>
       <FooterSection />
