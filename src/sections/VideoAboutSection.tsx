@@ -8,20 +8,22 @@ import {
 } from 'framer-motion';
 import { ContactButton } from '../components/ContactButton';
 
+const withBaseUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
 const floatingAssets = [
   {
     id: 'blueClover',
-    src: '/about-blue-clover.png',
+    src: withBaseUrl('about-blue-clover.png'),
     className: 'video-about-asset video-about-asset--blue-clover',
   },
   {
     id: 'heart',
-    src: '/about-heart.png',
+    src: withBaseUrl('about-heart.png'),
     className: 'video-about-asset video-about-asset--heart',
   },
   {
     id: 'flower',
-    src: '/about-flower.png',
+    src: withBaseUrl('about-flower.png'),
     className: 'video-about-asset video-about-asset--flower',
   },
 ] as const;

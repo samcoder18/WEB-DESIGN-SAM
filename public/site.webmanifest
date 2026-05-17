@@ -3,14 +3,14 @@
   "short_name": "Сэм",
   "description": "Портфолио 3D-креатора: моделирование, рендеринг, моушн, брендинг и веб-дизайн.",
   "lang": "ru",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "background_color": "#100E0E",
   "theme_color": "#100E0E",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
