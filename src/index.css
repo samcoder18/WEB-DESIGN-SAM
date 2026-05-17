@@ -11,6 +11,7 @@
   --site-font-body: 'ALS Hauss', 'ALS Hauss Hairline', 'ALS Hauss Thin', 'Manrope', sans-serif;
   --site-font-editorial: var(--site-font-body);
   --site-font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+  --site-section-radius: 56px;
   --background: 45 37% 93%;
   --foreground: 40 10% 10%;
   --card: 45 37% 93%;
@@ -28,6 +29,12 @@
   --border: 30 10% 80%;
   --input: 30 11% 84%;
   --ring: 20 96% 58%;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --site-section-radius: 68px;
+  }
 }
 
 *,
@@ -484,7 +491,7 @@ section[id] {
   isolation: isolate;
   overflow: hidden;
   margin-top: 0;
-  border-radius: clamp(1.35rem, 3.6vw, 2.75rem) clamp(1.35rem, 3.6vw, 2.75rem) 0 0;
+  border-radius: var(--site-section-radius) var(--site-section-radius) 0 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 243, 244, 0.94)),
     #f4f7f7;
@@ -593,8 +600,16 @@ section[id] {
   position: relative;
   isolation: isolate;
   margin-top: clamp(-1.2rem, -2.6vw, -2.4rem);
+  background: #eef3f1;
+}
+
+.projects-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: var(--site-section-radius) var(--site-section-radius) 0 0;
   background: var(--site-background-base);
-  border-radius: clamp(1.35rem, 3.6vw, 2.75rem) clamp(1.35rem, 3.6vw, 2.75rem) 0 0;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
     0 12px 24px rgba(0, 0, 0, 0.22);

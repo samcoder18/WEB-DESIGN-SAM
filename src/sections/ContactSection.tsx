@@ -58,7 +58,7 @@ export function ContactSection() {
     <section
       id="контакты"
       aria-labelledby="contact-heading"
-      className="relative isolate mt-[clamp(2rem,4vw,3.5rem)] overflow-hidden rounded-t-[clamp(1.5rem,4vw,3.25rem)] bg-[#eef3f1] px-4 pb-24 pt-24 text-[#101820] sm:px-6 lg:px-10 lg:pb-32 lg:pt-32"
+      className="relative isolate mt-[clamp(2rem,4vw,3.5rem)] overflow-hidden rounded-t-[var(--site-section-radius)] bg-[#eef3f1] px-4 pb-24 pt-24 text-[#101820] sm:px-6 lg:px-10 lg:pb-32 lg:pt-32"
     >
       <motion.div
         className="mx-auto grid w-full max-w-[78rem] gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start lg:gap-20 xl:gap-24"

@@ -1,21 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from 'framer-motion';
-
-import { FadeIn } from '../components/FadeIn';
 import { LiveProjectButton } from '../components/LiveProjectButton';
 import { type Project, projects } from '../data/portfolio';
-
-type ProjectCardProps = {
-  isMobile: boolean;
-  progress: MotionValue<number>;
-  project: Project;
-  index: number;
-  total: number;
-  stageInsetTop: number;
-  stackStep: number;
-};
-
-const MOBILE_MEDIA_QUERY = '(max-width: 767px)';
 
 function ProjectCardBody({ project, titleId }: { project: Project; titleId: string }) {
   return (
@@ -60,130 +44,26 @@ function ProjectCardBody({ project, titleId }: { project: Project; titleId: stri
   );
 }
 
-function getCardProgressRange(index: number, total: number) {
-  if (index === 0) {
-    return { start: 0, end: 0 };
-  }
-
-  const availableRangeStart = 0.24;
-  const availableRangeEnd = 0.94;
-  const segment = (availableRangeEnd - availableRangeStart) / Math.max(total - 1, 1);
-  const start = availableRangeStart + (index - 1) * segment;
-  const end = start + segment * 0.9;
-
-  return { start, end };
-}
-
-function ProjectCard({
-  project,
-  index,
-  total,
-  progress,
-  isMobile,
-  stageInsetTop,
-  stackStep,
-}: ProjectCardProps) {
-  const shouldReduceMotion = Boolean(useReducedMotion());
-  const titleId = `project-${project.number}-title`;
-  const offscreenY = isMobile ? 560 : 720;
-  const { start, end } = getCardProgressRange(index, total);
-  const parkedTop = stageInsetTop + stackStep * index;
-
-  const y = useTransform(
-    progress,
-    [0, start, end, 1],
-    index === 0
-      ? [0, 0, 0, 0]
-      : [offscreenY, offscreenY, 0, 0],
-  );
-
-  return (
-    <motion.article
-      aria-labelledby={titleId}
-      className="absolute left-0 right-0 flex min-h-[480px] flex-col overflow-hidden rounded-[40px] border-2 border-frost bg-ink p-5 text-frost shadow-[0_28px_80px_rgba(0,0,0,0.28)] sm:min-h-[560px] sm:rounded-[50px] sm:p-7 md:rounded-[60px] md:p-10"
-      style={{
-        top: parkedTop,
-        height: `calc(100% - ${parkedTop}px)`,
-        y: shouldReduceMotion ? 0 : y,
-        transformOrigin: 'top center',
-        zIndex: index + 1,
-      }}
-    >
-      <ProjectCardBody project={project} titleId={titleId} />
-    </motion.article>
-  );
-}
-
 export function ProjectsSection() {
-  const sectionRef = useRef<HTMLDivElement | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const shouldReduceMotion = Boolean(useReducedMotion());
-  const stackTop = isMobile ? 124 : 156;
-  const sceneInsetTop = 0;
-  const stackStep = isMobile ? 58 : 86;
-  const stickyHeight = isMobile ? 'calc(100svh - 9.5rem)' : 'calc(100svh - 11.5rem)';
-  const sectionHeight = shouldReduceMotion
-    ? 'auto'
-    : `${145 + (projects.length - 1) * (isMobile ? 108 : 132)}svh`;
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  });
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
-    const syncViewportState = (event?: MediaQueryListEvent) => {
-      setIsMobile(event ? event.matches : mediaQuery.matches);
-    };
-
-    syncViewportState();
-    mediaQuery.addEventListener('change', syncViewportState);
-
-    return () => mediaQuery.removeEventListener('change', syncViewportState);
-  }, []);
-
   return (
     <section
       id="проекты"
       className="projects-section relative z-10 px-5 py-24 sm:px-8 sm:py-28 md:px-10 md:py-36"
     >
       <div className="projects-section__inner">
-        <FadeIn y={40}>
-          <h2 className="projects-heading mb-20 text-center sm:mb-24 md:mb-32">Работы</h2>
-        </FadeIn>
+        <h2 className="projects-heading mb-20 text-center sm:mb-24 md:mb-32">Работы</h2>
 
-        {shouldReduceMotion ? (
-          <div className="mx-auto max-w-7xl space-y-6">
-            {projects.map((project) => (
-              <article
-                key={project.name}
-                aria-labelledby={`project-${project.number}-title`}
-                className="flex min-h-[480px] flex-col overflow-hidden rounded-[40px] border-2 border-frost bg-ink p-5 text-frost shadow-[0_28px_80px_rgba(0,0,0,0.28)] sm:min-h-[560px] sm:rounded-[50px] sm:p-7 md:rounded-[60px] md:p-10"
-              >
-                <ProjectCardBody project={project} titleId={`project-${project.number}-title`} />
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div ref={sectionRef} className="relative mx-auto max-w-7xl" style={{ height: sectionHeight }}>
-            <div className="sticky overflow-hidden" style={{ top: stackTop, height: stickyHeight }}>
-              <div className="relative h-full overflow-hidden">
-                {projects.map((project, index) => (
-                  <ProjectCard
-                    key={project.name}
-                    isMobile={isMobile}
-                    progress={scrollYProgress}
-                    project={project}
-                    index={index}
-                    total={projects.length}
-                    stageInsetTop={sceneInsetTop}
-                    stackStep={stackStep}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+        <div className="mx-auto max-w-7xl space-y-6">
+          {projects.map((project) => (
+            <article
+              key={project.name}
+              aria-labelledby={`project-${project.number}-title`}
+              className="flex min-h-[480px] flex-col overflow-hidden rounded-[40px] border-2 border-frost bg-ink p-5 text-frost shadow-[0_28px_80px_rgba(0,0,0,0.28)] sm:min-h-[560px] sm:rounded-[50px] sm:p-7 md:rounded-[60px] md:p-10"
+            >
+              <ProjectCardBody project={project} titleId={`project-${project.number}-title`} />
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
