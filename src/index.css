@@ -513,7 +513,7 @@ section[id] {
   max-width: 100%;
   color: var(--site-ink-strong);
   font-family: var(--site-font-heading);
-  font-size: clamp(3.35rem, 10vw, 7.7rem);
+  font-size: clamp(3.1rem, 8.2vw, 8.8rem);
   font-weight: 900;
   line-height: 0.78;
   letter-spacing: 0;
@@ -623,7 +623,7 @@ section[id] {
 .projects-heading {
   color: #ffffff;
   font-family: var(--site-font-heading);
-  font-size: clamp(3.35rem, 10vw, 7.7rem);
+  font-size: clamp(3.1rem, 8.2vw, 8.8rem);
   font-weight: 900;
   line-height: 0.78;
   letter-spacing: 0;
