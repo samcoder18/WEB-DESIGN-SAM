@@ -6,7 +6,7 @@ import {
   useTransform,
   type MotionValue,
 } from 'framer-motion';
-import { ContactButton } from '../components/ContactButton';
+import { Component as SpiderVerseGlitchButton } from '@/components/ui/spider-verse-glitch-button';
 
 const withBaseUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
@@ -164,13 +164,18 @@ export function VideoAboutSection() {
             чтобы бренд воспринимался смело, собранно и дорого.
           </motion.p>
           <motion.div
+            className="mt-[clamp(3rem,4.8vw,4.8rem)] max-[640px]:mt-12"
             style={
               shouldReduceMotion
                 ? undefined
                 : { opacity: buttonOpacity, y: buttonY, scale: buttonScale }
             }
           >
-            <ContactButton className="video-about-button" label="Связаться" showIcon={false} />
+            <SpiderVerseGlitchButton
+              className="about-spiderverse-cta"
+              label="Связаться"
+              to="/#контакты"
+            />
           </motion.div>
         </motion.div>
       </div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ContactButton } from '../components/ContactButton';
+import { Component as SpiderVerseGlitchButton } from '@/components/ui/spider-verse-glitch-button';
 import { FadeIn } from '../components/FadeIn';
 import { Magnet } from '../components/Magnet';
 import { portraitUrl } from '../data/portfolio';
@@ -37,9 +37,13 @@ export function HeroSection() {
         </div>
       </FadeIn>
 
-      <div className="relative z-20 mt-auto flex w-screen max-w-[100vw] items-end justify-end px-6 pb-10 sm:pb-14 md:px-10 md:pb-16">
+      <div className="absolute right-2 top-[60%] z-20 flex max-w-[calc(100vw-1rem)] justify-end sm:right-5 sm:top-[58%] md:right-[4vw] md:top-[54%] lg:right-[4.5vw] lg:top-[52%] xl:right-[5vw] xl:top-[50%]">
         <FadeIn delay={0.5} y={20}>
-          <ContactButton />
+          <SpiderVerseGlitchButton
+            className="hero-spiderverse-cta"
+            label="Связаться"
+            to="/#контакты"
+          />
         </FadeIn>
       </div>
     </section>

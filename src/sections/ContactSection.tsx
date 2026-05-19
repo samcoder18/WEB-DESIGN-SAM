@@ -4,17 +4,24 @@ import { motion, useReducedMotion } from 'framer-motion';
 
 const contactEmail = 'samcoder18@gmail.com';
 const telegramUrl = 'https://t.me/samcoder18';
+const withBaseUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+
+const contactAssets = [
+  {
+    id: 'bolt',
+    src: withBaseUrl('contact-bolt.png'),
+    className: 'contact-asset contact-asset--bolt',
+  },
+] as const;
 
 type ContactFormState = {
   name: string;
-  email: string;
   phone: string;
   message: string;
 };
 
 const initialFormState: ContactFormState = {
   name: '',
-  email: '',
   phone: '',
   message: '',
 };
@@ -42,8 +49,7 @@ export function ContactSection() {
     const body = encodeURIComponent(
       [
         `Имя: ${formState.name}`,
-        `Email: ${formState.email}`,
-        formState.phone ? `Телефон: ${formState.phone}` : null,
+        `Телефон: ${formState.phone}`,
         '',
         formState.message,
       ]
@@ -58,10 +64,38 @@ export function ContactSection() {
     <section
       id="контакты"
       aria-labelledby="contact-heading"
-      className="relative isolate mt-[clamp(2rem,4vw,3.5rem)] overflow-hidden rounded-t-[var(--site-section-radius)] bg-[#eef3f1] px-4 pb-24 pt-24 text-[#101820] sm:px-6 lg:px-10 lg:pb-32 lg:pt-32"
+      className="relative isolate mt-[clamp(2rem,4vw,3.5rem)] overflow-visible rounded-t-[var(--site-section-radius)] bg-[#eef3f1] px-4 pb-24 pt-24 text-[#101820] sm:px-6 lg:px-10 lg:pb-32 lg:pt-32"
     >
+      {contactAssets.map((asset, index) => (
+        <motion.span
+          key={asset.id}
+          aria-hidden="true"
+          className={asset.className}
+          initial={
+            shouldReduceMotion
+              ? false
+              : { opacity: 0, y: index === 0 ? -24 : 24, scale: 0.88 }
+          }
+          whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.24 }}
+          transition={{
+            delay: 0.12 + index * 0.08,
+            duration: 0.82,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
+          <img
+            src={asset.src}
+            alt=""
+            className="contact-asset__image"
+            loading="lazy"
+            decoding="async"
+          />
+        </motion.span>
+      ))}
+
       <motion.div
-        className="mx-auto grid w-full max-w-[78rem] gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start lg:gap-20 xl:gap-24"
+        className="relative z-10 mx-auto grid w-full max-w-[78rem] gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-start lg:gap-20 xl:gap-24"
         initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
         whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -71,9 +105,9 @@ export function ContactSection() {
           <div className="grid gap-5">
             <h2
               id="contact-heading"
-              className="max-w-[6.2ch] font-display text-[clamp(2.5rem,5.1vw,4.8rem)] font-black uppercase leading-[0.92] text-[#111a25]"
+              className="max-w-[6.2ch] font-display text-[clamp(2.5rem,5.1vw,4.8rem)] font-black uppercase leading-[1.04] text-[#111a25]"
             >
-              Давайте обсудим проект
+              Обсудить запуск сайта
             </h2>
           </div>
 
@@ -127,24 +161,7 @@ export function ContactSection() {
               />
             </div>
 
-            <div>
-              <label htmlFor={`${formId}-email`} className="sr-only">
-                Email
-              </label>
-              <input
-                id={`${formId}-email`}
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={formState.email}
-                onChange={updateField('email')}
-                placeholder="Email*"
-                className="h-12 w-full border-0 border-b border-[#101820]/16 bg-transparent px-0 text-sm font-semibold text-[#111a25] outline-none transition placeholder:text-[#101820]/28 focus:border-[#101820]"
-              />
-            </div>
-
-            <div>
+            <div className="sm:col-span-2">
               <label htmlFor={`${formId}-phone`} className="sr-only">
                 Телефон
               </label>
@@ -153,9 +170,10 @@ export function ContactSection() {
                 name="phone"
                 type="tel"
                 autoComplete="tel"
+                required
                 value={formState.phone}
                 onChange={updateField('phone')}
-                placeholder="Телефон"
+                placeholder="Телефон*"
                 className="h-12 w-full border-0 border-b border-[#101820]/16 bg-transparent px-0 text-sm font-semibold text-[#111a25] outline-none transition placeholder:text-[#101820]/28 focus:border-[#101820]"
               />
             </div>
